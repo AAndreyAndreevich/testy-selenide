@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'io.qameta.allure' version '2.9.6'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.testng:testng:7.7.0'
+    testImplementation 'com.codeborne:selenide:7.0.4'
+
+    runtimeOnly 'org.aspectj:aspectjweaver:1.9.5'
+    testImplementation 'io.qameta.allure:allure-junit5:2.12.1'
+    testImplementation 'io.qameta.allure:allure-assertj:2.12.1'
+    testImplementation 'io.qameta.allure:allure-rest-assured:2.12.1'
+    testImplementation 'io.qameta.allure:allure-java-commons:2.12.1'
+}
+
+test {
+    useTestNG()
+}
