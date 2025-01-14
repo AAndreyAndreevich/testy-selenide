@@ -19,7 +19,7 @@ public class AppTest extends BaseTest {
     @Test(priority = 1)
     @Description("Попытка входа на заблокированную учетную запись")
     public void lockedUserTest() {
-        if (!LoginPage.isAuthorization()) {
+        if (LoginPage.isAuthorization()) {
             LoginPage.lockedOutUserLogin();
         }
         Assert.assertTrue(LoginPage.getLockedInfo().isDisplayed());
@@ -28,7 +28,7 @@ public class AppTest extends BaseTest {
     @Test(priority = 2)
     @Description("Открывает первый элемент из списка продуктов")
     public void firstItemClickTest() {
-        if (!LoginPage.isAuthorization()) {
+        if (LoginPage.isAuthorization()) {
             LoginPage.standardUserLogin();
         }
         InventoryPage.clickFirstProduct();
@@ -38,7 +38,7 @@ public class AppTest extends BaseTest {
     @Test(priority = 3)
     @Description("Открывает случайный элемент из списка продуктов")
     public void randomItemClickTest() {
-        if (!LoginPage.isAuthorization()) {
+        if (LoginPage.isAuthorization()) {
             LoginPage.standardUserLogin();
         }
         InventoryPage.clickRandomProduct();

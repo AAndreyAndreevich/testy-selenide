@@ -10,7 +10,7 @@ public class BaseTest {
 
     @BeforeSuite
     public static void setUp() {
-        WebDriverFactory.setWebDriver("chrome");
+        WebDriverFactory.setWebDriver("edge");
         Configuration.browserSize = "1400x1000";
         Configuration.headless = false;
     }

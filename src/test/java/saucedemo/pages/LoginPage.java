@@ -62,6 +62,6 @@ public class LoginPage {
     }
 
     public static boolean isAuthorization() {
-        return authorization;
+        return !authorization;
     }
 }
