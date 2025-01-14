@@ -1,15 +1,16 @@
 package factory;
 
 import com.codeborne.selenide.Configuration;
+import enums.EnumDriver;
 
 public class WebDriverFactory {
-    public static void setWebDriver(String driver) {
+    public static void setWebDriver(EnumDriver driver) {
         switch (driver) {
-            case "chrome":
+            case CHROME:
                 System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\drivers\\chromedriver.exe");
                 Configuration.browser = "chrome";
                 break;
-            case "edge":
+            case EDGE:
                 System.setProperty("webdriver.edge.verboseLogging", "src\\test\\resources\\drivers\\msedgedriver.exe");
                 Configuration.browser = "edge";
                 break;

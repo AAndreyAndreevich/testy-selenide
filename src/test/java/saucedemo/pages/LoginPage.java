@@ -1,6 +1,7 @@
 package saucedemo.pages;
 
 import com.codeborne.selenide.SelenideElement;
+import enums.EnumUser;
 
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -23,25 +24,25 @@ public class LoginPage {
         return !authorization;
     }
 
-    public static void logIn(String username) {
+    public static void logIn(EnumUser username) {
         if (LoginPage.isAuthorization()) {
             switch (username) {
-                case "standard_user":
+                case STANDARD:
                     USERNAME_ELEMENT.setValue("standard_user");
                     break;
-                case "locked_out_user":
+                case LOCKED:
                     USERNAME_ELEMENT.setValue("locked_out_user");
                     break;
-                case "problem_user":
+                case PROBLEM:
                     USERNAME_ELEMENT.setValue("problem_user");
                     break;
-                case "performance_glitch_user":
+                case PERFORMANCE:
                     USERNAME_ELEMENT.setValue("performance_glitch_user");
                     break;
-                case "error_user":
+                case ERROR:
                     USERNAME_ELEMENT.setValue("error_user");
                     break;
-                case "visual_user":
+                case VISUAL:
                     USERNAME_ELEMENT.setValue("visual_user");
                     break;
                 default:
@@ -50,7 +51,7 @@ public class LoginPage {
             }
             PASSWORD_ELEMENT.setValue(password);
             LOGIN_BUTTON.click();
-            authorization = !username.equals("locked_out_user");
+            authorization = !username.equals(EnumUser.LOCKED);
         }
     }
 }
