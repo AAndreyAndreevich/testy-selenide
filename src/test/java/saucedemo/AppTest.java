@@ -1,6 +1,7 @@
 package saucedemo;
 
 import com.codeborne.selenide.Selenide;
+import factory.WebDriverFactory;
 import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
@@ -13,6 +14,8 @@ public class AppTest extends BaseTest {
 
     @BeforeTest
     public void openSite() {
+        //рекомендуется запускать эти тесты в edge
+        WebDriverFactory.setWebDriver("edge");
         Selenide.open("https://www.saucedemo.com/");
     }
 

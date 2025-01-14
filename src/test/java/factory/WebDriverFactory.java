@@ -1,7 +1,6 @@
 package factory;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
 
 public class WebDriverFactory {
     public static void setWebDriver(String driver) {
