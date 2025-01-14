@@ -34,4 +34,10 @@ public class InventoryPage {
     public static SelenideElement getBackToList() {
         return BACK_TO_LIST;
     }
+
+    public static void backToList() {
+        if (InventoryPage.getBackToList().isDisplayed()) {
+            InventoryPage.getBackToList().click();
+        }
+    }
 }

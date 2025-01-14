@@ -15,53 +15,42 @@ public class LoginPage {
 
     private static boolean authorization;
 
-    public static void standardUserLogin() {
-        USERNAME_ELEMENT.setValue("standard_user");
-        PASSWORD_ELEMENT.setValue(password);
-        LOGIN_BUTTON.click();
-        authorization = true;
-    }
-
-    public static void lockedOutUserLogin() {
-        USERNAME_ELEMENT.setValue("locked_out_user");
-        PASSWORD_ELEMENT.setValue(password);
-        LOGIN_BUTTON.click();
-        authorization = false;
-    }
-
-    public static void problemUserLogin() {
-        USERNAME_ELEMENT.setValue("problem_user");
-        PASSWORD_ELEMENT.setValue(password);
-        LOGIN_BUTTON.click();
-        authorization = true;
-    }
-
-    public static void performanceGlitchUserLogin() {
-        USERNAME_ELEMENT.setValue("performance_glitch_user");
-        PASSWORD_ELEMENT.setValue(password);
-        LOGIN_BUTTON.click();
-        authorization = true;
-    }
-
-    public static void errorUserLogin() {
-        USERNAME_ELEMENT.setValue("error_user");
-        PASSWORD_ELEMENT.setValue(password);
-        LOGIN_BUTTON.click();
-        authorization = true;
-    }
-
-    public static void visualUserLogin() {
-        USERNAME_ELEMENT.setValue("visual_user");
-        PASSWORD_ELEMENT.setValue(password);
-        LOGIN_BUTTON.click();
-        authorization = true;
-    }
-
     public static SelenideElement getLockedInfo() {
         return LOCKED_INFO;
     }
 
     public static boolean isAuthorization() {
         return !authorization;
+    }
+
+    public static void logIn(String username) {
+        if (LoginPage.isAuthorization()) {
+            switch (username) {
+                case "standard_user":
+                    USERNAME_ELEMENT.setValue("standard_user");
+                    break;
+                case "locked_out_user":
+                    USERNAME_ELEMENT.setValue("locked_out_user");
+                    break;
+                case "problem_user":
+                    USERNAME_ELEMENT.setValue("problem_user");
+                    break;
+                case "performance_glitch_user":
+                    USERNAME_ELEMENT.setValue("performance_glitch_user");
+                    break;
+                case "error_user":
+                    USERNAME_ELEMENT.setValue("error_user");
+                    break;
+                case "visual_user":
+                    USERNAME_ELEMENT.setValue("visual_user");
+                    break;
+                default:
+                    System.err.println("Данного пользователя не существует");
+                    break;
+            }
+            PASSWORD_ELEMENT.setValue(password);
+            LOGIN_BUTTON.click();
+            authorization = !username.equals("locked_out_user");
+        }
     }
 }
