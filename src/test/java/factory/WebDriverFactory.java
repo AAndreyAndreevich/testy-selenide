@@ -14,7 +14,7 @@ public class WebDriverFactory {
                 Configuration.browser = "edge";
                 break;
             default:
-                System.out.println("Такого драйвера нет, выберите 'edge' или 'chrome'");
+                System.err.println("Такого драйвера нет, выберите 'edge' или 'chrome'");
                 break;
         }
     }
