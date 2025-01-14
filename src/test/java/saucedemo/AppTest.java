@@ -2,7 +2,6 @@ package saucedemo;
 
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Description;
-import org.openqa.selenium.WindowType;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import saucedemo.pages.InventoryPage;
