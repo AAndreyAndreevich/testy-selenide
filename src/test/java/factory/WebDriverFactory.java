@@ -1,6 +1,7 @@
 package factory;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 
 public class WebDriverFactory {
     public static void setWebDriver(String driver) {
@@ -15,7 +16,7 @@ public class WebDriverFactory {
                 break;
             default:
                 System.err.println("Такого драйвера нет, выберите 'edge' или 'chrome'");
-                break;
+                System.exit(1);
         }
     }
 }
