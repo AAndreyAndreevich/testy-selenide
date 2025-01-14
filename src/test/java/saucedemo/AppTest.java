@@ -33,6 +33,7 @@ public class AppTest extends BaseTest {
         }
         InventoryPage.clickFirstProduct();
         Assert.assertTrue(InventoryPage.getBackToList().isDisplayed());
+        InventoryPage.getBackToList().click();
     }
 
     @Test(priority = 3)
@@ -43,6 +44,7 @@ public class AppTest extends BaseTest {
         }
         InventoryPage.clickRandomProduct();
         Assert.assertTrue(InventoryPage.getBackToList().isDisplayed());
+        InventoryPage.getBackToList().click();
     }
 
 }
