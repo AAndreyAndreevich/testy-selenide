@@ -2,7 +2,8 @@ package enums;
 
 public enum EnumDriver {
 
-    CHROME("chrome"), EDGE("edge");
+    CHROME("chrome"),
+    EDGE("edge");
 
     private static String driver;
 

@@ -9,7 +9,6 @@ public enum EnumUser {
     ERROR("error_user"),
     VISUAL("visual_user");
 
-
     private static String username;
 
     public static String getUsername(String username) {
