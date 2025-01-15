@@ -12,7 +12,7 @@ public class LoginPage {
     private static final SelenideElement LOGIN_BUTTON = $x("//input[@value='Login']");
     private static final SelenideElement LOCKED_INFO = $x("//h3[@data-test='error']");
 
-    private static final String password = "secret_sauce";
+    private static final String PASSWORD = "secret_sauce";
 
     private static boolean authorization;
 
@@ -34,13 +34,13 @@ public class LoginPage {
                 case ERROR -> USERNAME_ELEMENT.setValue("error_user");
                 case VISUAL -> USERNAME_ELEMENT.setValue("visual_user");
             }
-            PASSWORD_ELEMENT.setValue(password);
+            PASSWORD_ELEMENT.setValue(PASSWORD);
             LOGIN_BUTTON.click();
             authorization = !username.equals(EnumUser.LOCKED);
         } else {
-            if (InventoryPage.getMenuButton().isDisplayed()) {
-                InventoryPage.getMenuButton().click();
-                InventoryPage.getLogoutButton().click();
+            if (InventoryPage.getMenu().isDisplayed()) {
+                InventoryPage.getMenu().click();
+                InventoryPage.getLogout().click();
                 authorization = false;
             }
         }

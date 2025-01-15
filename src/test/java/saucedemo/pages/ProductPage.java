@@ -17,4 +17,8 @@ public class ProductPage {
     private final static SelenideElement REMOVE_FROM_CART =
             $x("//button[@class='btn btn_secondary btn_small btn_inventory']");
 
+    public static void addToCart() {
+        ADD_TO_CART_BUTTON.click();
+    }
+
 }

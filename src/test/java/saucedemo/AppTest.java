@@ -8,12 +8,16 @@ import factory.WebDriverFactory;
 import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
-import saucedemo.pages.InventoryPage;
-import saucedemo.pages.LoginPage;
+import saucedemo.pages.*;
 import service.BaseTest;
 import org.testng.annotations.Test;
 
 public class AppTest extends BaseTest {
+
+    private final String FIRST_NAME  = "Jocelyn";
+    private final String LAST_NAME = "Flores";
+    private final String POSTAL_CODE = "10450";
+    private final String COMPLETE_TEXT = "Thank you for your order!";
 
     @BeforeTest(groups = "saucedemo")
     public void openSite() {
@@ -46,19 +50,44 @@ public class AppTest extends BaseTest {
     }
 
     @Test(groups = "saucedemo", priority = 4)
-    @Description("Покупка первой вещи из каталога используя стандартного пользователя")
-    public void buyFirstItemTest() {
+    @Description("Попытка покупки первой вещи из каталога используя стандартного пользователя, ожидает просьбу указать данные")
+    public void buyFirstItemThisErrorTest() {
         LoginPage.logIn(EnumUser.STANDARD);
         InventoryPage.clickFirstProduct();
-
+        ProductPage.addToCart();
+        InventoryPage.toShoppingCart();
+        ShoppingCartPage.acceptOrder();
+        CheckoutPage.userInfoBuilder(null, null, null);
+        CheckoutPage.acceptAndContinue();
+        Assert.assertTrue(CheckoutPage.getErrorMessage().isDisplayed());
     }
 
     @Test(groups = "saucedemo", priority = 5)
-    public void filterTest() {
+    @Description("Попытка покупки первой вещи из каталога используя стандартного пользователя")
+    public void buyFirstItemWithoutErrorTest() {
         LoginPage.logIn(EnumUser.STANDARD);
-        InventoryPage.setFilter(EnumFilter.PRICE_HIGH_TO_LOW);
+        InventoryPage.clickFirstProduct();
+        ProductPage.addToCart();
+        InventoryPage.toShoppingCart();
+        ShoppingCartPage.acceptOrder();
+        CheckoutPage.userInfoBuilder(FIRST_NAME, LAST_NAME, POSTAL_CODE);
+        CheckoutPage.acceptAndContinue();
+        CheckoutPage.finishCreateOrder();
+        Assert.assertEquals(CheckoutPage.getCompleteText(), COMPLETE_TEXT);
+    }
+
+    @Test(groups = "saucedemo", priority = 6)
+    @Description("Попытка покупки первой вещи из каталога используя фильтр")
+    public void buyFirstItemWithFilter() {
+        LoginPage.logIn(EnumUser.STANDARD);
         InventoryPage.setFilter(EnumFilter.PRICE_LOW_TO_HIGH);
-        InventoryPage.setFilter(EnumFilter.NAME_Z_TO_A);
-        InventoryPage.setFilter(EnumFilter.NAME_A_TO_Z);
+        InventoryPage.clickFirstProduct();
+        ProductPage.addToCart();
+        InventoryPage.toShoppingCart();
+        ShoppingCartPage.acceptOrder();
+        CheckoutPage.userInfoBuilder(FIRST_NAME, LAST_NAME, POSTAL_CODE);
+        CheckoutPage.acceptAndContinue();
+        CheckoutPage.finishCreateOrder();
+        Assert.assertEquals(CheckoutPage.getCompleteText(), COMPLETE_TEXT);
     }
 }

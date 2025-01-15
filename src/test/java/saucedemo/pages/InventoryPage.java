@@ -14,17 +14,17 @@ public class InventoryPage {
             $$x("//div[@class='inventory_list']//div[@class='inventory_item_img']");
     private final static SelenideElement BACK_TO_LIST =
             $x("//button[@class='btn btn_secondary back btn_large inventory_details_back_button']");
-    private final static SelenideElement MENU_BUTTON = $x("//button[@id='react-burger-menu-btn']");
-    private final static SelenideElement LOGOUT_BUTTON = $x("//a[@id='logout_sidebar_link']");
+    private final static SelenideElement MENU = $x("//button[@id='react-burger-menu-btn']");
+    private final static SelenideElement LOGOUT = $x("//a[@id='logout_sidebar_link']");
     private final static SelenideElement SHOPPING_CART = $x("//a[@class='shopping_cart_link']");
     private final static SelenideElement FILTER = $x("//select[@class='product_sort_container']");
     private final static SelenideElement ADD_TO_CART =
             $x("//button[@class='btn btn_primary btn_small btn_inventory ']");
     private final static SelenideElement REMOVE_FROM_CART =
             $x("//button[@class='btn btn_secondary btn_small btn_inventory ']");
-    private final static SelenideElement TWITTER_BUTTON = $x("");
-    private final static SelenideElement FACEBOOK_BUTTON = $x("");
-    private final static SelenideElement LINKEDIN_BUTTON = $x("");
+//    private final static SelenideElement TWITTER = $x("");
+//    private final static SelenideElement FACEBOOK = $x("");
+//    private final static SelenideElement LINKEDIN = $x("");
 
 
     public static void setFilter(EnumFilter filter) {
@@ -63,13 +63,13 @@ public class InventoryPage {
     public static SelenideElement getBackToList() {
         return BACK_TO_LIST;
     }
-    public static SelenideElement getMenuButton() {
-        return MENU_BUTTON;
+    public static SelenideElement getMenu() {
+        return MENU;
     }
-    public static SelenideElement getLogoutButton() {
-        return LOGOUT_BUTTON;
+    public static SelenideElement getLogout() {
+        return LOGOUT;
     }
-    public static SelenideElement getShoppingCart() {
-        return SHOPPING_CART;
+    public static void toShoppingCart() {
+        SHOPPING_CART.click();
     }
 }
