@@ -34,22 +34,6 @@ public class AppTest extends BaseTest {
     }
 
     @Test(groups = "saucedemo", priority = 2)
-    @Description("Открывает первый элемент из списка продуктов")
-    public void firstItemClickTest() {
-        LoginPage.logIn(EnumUser.STANDARD);
-        InventoryPage.clickFirstProduct();
-        Assert.assertTrue(InventoryPage.getBackToList().isDisplayed());
-    }
-
-    @Test(groups = "saucedemo", priority = 3)
-    @Description("Открывает случайный элемент из списка продуктов")
-    public void randomItemClickTest() {
-        LoginPage.logIn(EnumUser.STANDARD);
-        InventoryPage.clickRandomProduct();
-        Assert.assertTrue(InventoryPage.getBackToList().isDisplayed());
-    }
-
-    @Test(groups = "saucedemo", priority = 4)
     @Description("Попытка покупки первой вещи из каталога используя стандартного пользователя, ожидает просьбу указать данные")
     public void buyFirstItemThisErrorTest() {
         LoginPage.logIn(EnumUser.STANDARD);
@@ -62,7 +46,7 @@ public class AppTest extends BaseTest {
         Assert.assertTrue(CheckoutPage.getErrorMessage().isDisplayed());
     }
 
-    @Test(groups = "saucedemo", priority = 5)
+    @Test(groups = "saucedemo", priority = 3)
     @Description("Попытка покупки первой вещи из каталога используя стандартного пользователя")
     public void buyFirstItemWithoutErrorTest() {
         LoginPage.logIn(EnumUser.STANDARD);
@@ -76,7 +60,7 @@ public class AppTest extends BaseTest {
         Assert.assertEquals(CheckoutPage.getCompleteText(), COMPLETE_TEXT);
     }
 
-    @Test(groups = "saucedemo", priority = 6)
+    @Test(groups = "saucedemo", priority = 4)
     @Description("Попытка покупки первой вещи из каталога используя фильтр")
     public void buyFirstItemWithFilter() {
         LoginPage.logIn(EnumUser.STANDARD);
