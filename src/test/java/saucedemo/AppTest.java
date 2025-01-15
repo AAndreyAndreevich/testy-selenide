@@ -15,21 +15,21 @@ import org.testng.annotations.Test;
 
 public class AppTest extends BaseTest {
 
-    @BeforeTest
+    @BeforeTest(groups = "saucedemo")
     public void openSite() {
         //рекомендуется запускать эти тесты в edge
         WebDriverFactory.setWebDriver(EnumDriver.EDGE);
         Selenide.open("https://www.saucedemo.com/");
     }
 
-    @Test
+    @Test(groups = "saucedemo", priority = 1)
     @Description("Попытка входа на заблокированную учетную запись")
     public void lockedUserTest() {
         LoginPage.logIn(EnumUser.LOCKED);
         Assert.assertTrue(LoginPage.getLockedInfo().isDisplayed());
     }
 
-    @Test
+    @Test(groups = "saucedemo", priority = 2)
     @Description("Открывает первый элемент из списка продуктов")
     public void firstItemClickTest() {
         LoginPage.logIn(EnumUser.STANDARD);
@@ -37,7 +37,7 @@ public class AppTest extends BaseTest {
         Assert.assertTrue(InventoryPage.getBackToList().isDisplayed());
     }
 
-    @Test
+    @Test(groups = "saucedemo", priority = 3)
     @Description("Открывает случайный элемент из списка продуктов")
     public void randomItemClickTest() {
         LoginPage.logIn(EnumUser.STANDARD);
@@ -45,15 +45,15 @@ public class AppTest extends BaseTest {
         Assert.assertTrue(InventoryPage.getBackToList().isDisplayed());
     }
 
-//    @Test
-//    @Description("Покупка первой вещи из каталога используя стандартного пользователя")
-//    public void buyFirstItemTest() {
-//        LoginPage.logIn(EnumUser.STANDARD);
-//        InventoryPage.clickFirstProduct();
-//
-//    }
+    @Test(groups = "saucedemo", priority = 4)
+    @Description("Покупка первой вещи из каталога используя стандартного пользователя")
+    public void buyFirstItemTest() {
+        LoginPage.logIn(EnumUser.STANDARD);
+        InventoryPage.clickFirstProduct();
 
-    @Test
+    }
+
+    @Test(groups = "saucedemo", priority = 5)
     public void filterTest() {
         LoginPage.logIn(EnumUser.STANDARD);
         InventoryPage.setFilter(EnumFilter.PRICE_HIGH_TO_LOW);
