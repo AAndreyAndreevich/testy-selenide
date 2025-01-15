@@ -21,31 +21,27 @@ public class AppTest extends BaseTest {
         Selenide.open("https://www.saucedemo.com/");
     }
 
-    @Test(priority = 1)
+    @Test
     @Description("Попытка входа на заблокированную учетную запись")
     public void lockedUserTest() {
         LoginPage.logIn(EnumUser.LOCKED);
         Assert.assertTrue(LoginPage.getLockedInfo().isDisplayed());
     }
 
-    @Test(priority = 2)
+    @Test
     @Description("Открывает первый элемент из списка продуктов")
     public void firstItemClickTest() {
-        InventoryPage.backToList();
         LoginPage.logIn(EnumUser.STANDARD);
         InventoryPage.clickFirstProduct();
         Assert.assertTrue(InventoryPage.getBackToList().isDisplayed());
-        InventoryPage.backToList();
     }
 
-    @Test(priority = 3)
+    @Test
     @Description("Открывает случайный элемент из списка продуктов")
     public void randomItemClickTest() {
-        InventoryPage.backToList();
         LoginPage.logIn(EnumUser.STANDARD);
         InventoryPage.clickRandomProduct();
         Assert.assertTrue(InventoryPage.getBackToList().isDisplayed());
-        InventoryPage.backToList();
     }
 
 }

@@ -52,6 +52,12 @@ public class LoginPage {
             PASSWORD_ELEMENT.setValue(password);
             LOGIN_BUTTON.click();
             authorization = !username.equals(EnumUser.LOCKED);
+        } else {
+            if (InventoryPage.getMenuButton().isDisplayed()) {
+                InventoryPage.getMenuButton().click();
+                InventoryPage.getLogoutButton().click();
+                authorization = false;
+            }
         }
     }
 }

@@ -1,9 +1,6 @@
 package saucedemo.pages;
 
-import com.codeborne.selenide.CollectionCondition;
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.*;
 
 import java.util.Random;
 
@@ -16,6 +13,8 @@ public class InventoryPage {
             $$x("//div[@class='inventory_list']//div[@class='inventory_item_img']");
     private final static SelenideElement BACK_TO_LIST =
             $x("//button[@class='btn btn_secondary back btn_large inventory_details_back_button']");
+    private final static SelenideElement MENU_BUTTON = $x("//button[@id='react-burger-menu-btn']");
+    private final static SelenideElement LOGOUT_BUTTON = $x("//a[@id='logout_sidebar_link']");
 
     public static void clickFirstProduct() {
         PRODUCTS_LIST
@@ -31,13 +30,21 @@ public class InventoryPage {
                 .get(new Random().nextInt(PRODUCTS_LIST.size()))
                 .click();
     }
+
     public static SelenideElement getBackToList() {
         return BACK_TO_LIST;
     }
 
     public static void backToList() {
-        if (InventoryPage.getBackToList().isDisplayed()) {
-            InventoryPage.getBackToList().click();
+        if (BACK_TO_LIST.isDisplayed()) {
+            BACK_TO_LIST.click();
         }
+    }
+
+    public static SelenideElement getMenuButton() {
+        return MENU_BUTTON;
+    }
+    public static SelenideElement getLogoutButton() {
+        return LOGOUT_BUTTON;
     }
 }
