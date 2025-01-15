@@ -2,6 +2,7 @@ package saucedemo;
 
 import com.codeborne.selenide.Selenide;
 import enums.EnumDriver;
+import enums.EnumFilter;
 import enums.EnumUser;
 import factory.WebDriverFactory;
 import io.qameta.allure.Description;
@@ -44,4 +45,20 @@ public class AppTest extends BaseTest {
         Assert.assertTrue(InventoryPage.getBackToList().isDisplayed());
     }
 
+//    @Test
+//    @Description("Покупка первой вещи из каталога используя стандартного пользователя")
+//    public void buyFirstItemTest() {
+//        LoginPage.logIn(EnumUser.STANDARD);
+//        InventoryPage.clickFirstProduct();
+//
+//    }
+
+    @Test
+    public void filterTest() {
+        LoginPage.logIn(EnumUser.STANDARD);
+        InventoryPage.setFilter(EnumFilter.PRICE_HIGH_TO_LOW);
+        InventoryPage.setFilter(EnumFilter.PRICE_LOW_TO_HIGH);
+        InventoryPage.setFilter(EnumFilter.NAME_Z_TO_A);
+        InventoryPage.setFilter(EnumFilter.NAME_A_TO_Z);
+    }
 }

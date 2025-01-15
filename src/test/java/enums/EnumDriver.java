@@ -5,9 +5,9 @@ public enum EnumDriver {
     CHROME("chrome"),
     EDGE("edge");
 
-    private static String driver;
+    private String driver;
 
-    public static String getDriver() {
+    public String getDriver() {
         return driver;
     }
 

@@ -10,7 +10,7 @@ public class TestNgRetry implements IRetryAnalyzer {
     @Override
     public boolean retry(ITestResult result) {
         if (!result.isSuccess()) {
-            if (count < 3) {
+            if (count < 2) {
                 count++;
                 return true;
             }
