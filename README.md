@@ -2,4 +2,4 @@
 
 Selenide + TestNG, сборка на Gradle(Groovy)
 
-Java 17
+Java 19
