@@ -1,7 +1,7 @@
 package saucedemo.pages;
 
 import com.codeborne.selenide.*;
-import enums.EnumFilter;
+import saucedemo.enums.EnumFilter;
 
 import java.util.Random;
 

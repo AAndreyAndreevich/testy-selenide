@@ -1,9 +1,9 @@
 package saucedemo;
 
 import com.codeborne.selenide.Selenide;
-import enums.EnumDriver;
-import enums.EnumFilter;
-import enums.EnumUser;
+import saucedemo.enums.EnumDriver;
+import saucedemo.enums.EnumFilter;
+import saucedemo.enums.EnumUser;
 import factory.WebDriverFactory;
 import io.qameta.allure.Description;
 import org.testng.Assert;

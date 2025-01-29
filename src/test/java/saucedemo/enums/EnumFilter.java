@@ -1,4 +1,4 @@
-package enums;
+package saucedemo.enums;
 
 public enum EnumFilter {
     NAME_A_TO_Z(0),

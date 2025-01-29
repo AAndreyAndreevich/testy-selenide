@@ -1,7 +1,7 @@
 package factory;
 
 import com.codeborne.selenide.Configuration;
-import enums.EnumDriver;
+import saucedemo.enums.EnumDriver;
 
 public class WebDriverFactory {
     public static void setWebDriver(EnumDriver driver) {

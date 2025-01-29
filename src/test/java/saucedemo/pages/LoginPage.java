@@ -1,7 +1,7 @@
 package saucedemo.pages;
 
 import com.codeborne.selenide.SelenideElement;
-import enums.EnumUser;
+import saucedemo.enums.EnumUser;
 
 import static com.codeborne.selenide.Selenide.$x;
 
